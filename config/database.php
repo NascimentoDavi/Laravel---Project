@@ -98,7 +98,7 @@ return [
         ],
 
         'sqlsrv' => [
-            'driver' => 'sqlsrv',
+            'driver' => 'sqlsrv',   
             'url' => env('DB_URL'),
             'host' => env('DB_HOST', 'localhost'),
             'port' => env('DB_PORT', '1433'),
@@ -167,7 +167,5 @@ return [
             'port' => env('REDIS_PORT', '6379'),
             'database' => env('REDIS_CACHE_DB', '1'),
         ],
-
     ],
-
 ];

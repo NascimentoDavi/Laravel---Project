@@ -8,9 +8,22 @@ use Illuminate\Http\Request;
 
 class SupportController extends Controller
 {
-    public function index (Support $support) {
+    public function main (Support $support) {
+
+        // return all the registers.
         $supports = $support->all();
-        dd($supports);
-        return view('admin/supports/index');
+
+        return view('admin/supports/main', compact('supports'));
+    }
+
+    public function create () 
+    {
+        return view('admin/supports/create');
+    }
+
+    public function store () 
+    {
+        // method to store the data inside the database.
+        dd('Its going to register...');
     }
 }

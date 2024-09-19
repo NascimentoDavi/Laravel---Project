@@ -10,7 +10,6 @@ Route::get('/supports/create', [SupportController::class, 'create'])->name('supp
 Route::get('/supports/main', [SupportController::class, 'main'])->name('support.main');
 Route::get('/homepage', [HomeController::class, 'home'])->name('homepage.home');
 
-
 Route::get('/', function () {
     return view('welcome');
 });

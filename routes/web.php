@@ -13,4 +13,3 @@ Route::get('/homepage', [HomeController::class, 'home'])->name('homepage.home');
 Route::get('/', function () {
     return view('welcome');
 });
-

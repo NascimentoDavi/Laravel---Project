@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('supports', function (Blueprint $table) {
             $table->id(); // primary key
             $table->string('subject');
-            $table->enum('status', ['o', 'p', 'c']); // 'o' means opened, 'p' means pending and c means closed.
+            $table->enum('status', ['o', 'p', 'c']); // 'o' means opened, 'p' means pending and 'c' means closed.
             $table->text('body');
             $table->timestamps();
         });

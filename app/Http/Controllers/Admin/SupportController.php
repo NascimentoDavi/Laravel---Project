@@ -16,6 +16,11 @@ class SupportController extends Controller
         return view('admin/supports/main', compact('supports'));
     }
 
+
+
+
+
+
     public function show (string | int $id)
     {
         // Support::where('id', $id)->first();
@@ -28,10 +33,19 @@ class SupportController extends Controller
         return view('admin/supports/show',  compact('support'));
     }
 
+
+
+
+
+
     public function create () 
     {
         return view('admin/supports/create');
     }
+
+
+
+
 
     public function store (Request $request, Support $support) 
     {
@@ -43,14 +57,26 @@ class SupportController extends Controller
         dd($support);
     }
 
+
+
+
+
+
+
     public function edit (Support $support, string | int $id)
     {
         if(!$support = Support::where('id', '=', $id)->first())
         {
-            return redirect()->back(); // I could return back();
+            return redirect()->back();
         }
+        
         return view('admin/supports/edit', compact('support'));
     }
+
+
+
+
+
 
     public function update (Support $support, Request $request, string | int $id)
     {
@@ -58,18 +84,7 @@ class SupportController extends Controller
         {
             return redirect()->back();
         }
-
-        /*
-
-        $support->update() could be done manually like this
-        This works for registering and editing a register.
-
-        $support->subject = $request->subject;
-        $support->body = $request->body;
-        $support->save();
-        */
-
-        // Make Update with specific value
+        
         $support->update($request->only([
             'subject',
             'body',
@@ -78,4 +93,25 @@ class SupportController extends Controller
         // redirect to list
         return redirect()->route('support.main');
     }
+
+
+
+
+
+
+    public function destroy (string | int $id)
+    {
+        if(!$support = Support::where('id', '=', $id)->first())
+        {
+            return redirect()->back();
+        }
+        $support->delete();
+        return redirect()->route('support.main');
+    }
+
+
+
+
+
+
 }

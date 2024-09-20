@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class StoreUpdateSupport extends FormRequest
 {
@@ -35,10 +36,11 @@ class StoreUpdateSupport extends FormRequest
                 'required',
                 'min:3',
                 'max:255',
-                "unique:supports,subject,{$this->id},id"
+                // "unique:supports,subject,{$this->id},id"
+                Rule::unique('supports')->ignore($this->id), // Informa que é único na tabela 'supports', entretanto  pode ignorar esse id.
             ];
         }
 
-        return $rules; 
+        return $rules;
     }
 }

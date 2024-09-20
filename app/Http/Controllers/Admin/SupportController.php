@@ -51,7 +51,7 @@ class SupportController extends Controller
     public function store (StoreUpdateSupport $request, Support $support) 
     {
         // Store information inside the database    
-        $data = $request->all();
+        $data = $request->validated();
         $data['status'] = 'o';
 
         $support = $support->create($data);
@@ -86,10 +86,7 @@ class SupportController extends Controller
             return redirect()->back();
         }
         
-        $support->update($request->only([
-            'subject',
-            'body',
-        ]));
+        $support->update($request->validated());
 
         // redirect to list
         return redirect()->route('support.main');

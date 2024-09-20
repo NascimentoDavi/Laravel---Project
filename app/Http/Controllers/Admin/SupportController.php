@@ -79,7 +79,7 @@ class SupportController extends Controller
 
 
 
-    public function update (Support $support, Request $request, string | int $id)
+    public function update (StoreUpdateSupport $request, string | int $id)
     {
         if(!$support = Support::where('id', '=', $id)->first())
         {

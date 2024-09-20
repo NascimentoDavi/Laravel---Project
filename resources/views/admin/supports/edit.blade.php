@@ -1,5 +1,11 @@
 <h1>Edit Question {{ $support->id }}</h1>
 
+@if ($errors->any())
+    @foreach($errors->all() as $error)
+        {{ $error }}
+    @endforeach
+@endif
+
 <form action="{{ route('support.update', $support->id) }}" method="POST">
     @csrf()
     @method('PUT')

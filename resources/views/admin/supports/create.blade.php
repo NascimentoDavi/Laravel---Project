@@ -10,7 +10,14 @@
 <form action="{{ route('support.store') }}" method="POST">
     @csrf()
 
-    <input type="text" placeholder="Subject" name="subject">
-    <textarea name="body" cols="30" rows="5" placeholder="Description"></textarea>
+    {{--
+
+    {{ old('subject') }}
+    Se existe algum valor ja preenchido no campo, ele persiste.
+
+    --}}
+
+    <input type="text" placeholder="Subject" name="subject" value="{{ old('subject') }}">
+    <textarea name="body" cols="30" rows="5" placeholder="Description">{{ old('body') }}</textarea>
     <button type="submit">Submit</button>
 </form>

@@ -21,8 +21,7 @@ class StoreUpdateSupport extends FormRequest
      */
     public function rules(): array
     {
-        return [
-            // Both forms can be used
+        $rules = [
             'subject' => 'required|min:3|max:255|unique:supports',
             'body' => [
                 'required',
@@ -30,5 +29,16 @@ class StoreUpdateSupport extends FormRequest
                 'max:10000'
             ],
         ];
+
+        if ($this->method() === 'PUT') {
+            $rules['subject'] = [
+                'required',
+                'min:3',
+                'max:255',
+                "unique:supports,subject,{$this->id},id"
+            ];
+        }
+
+        return $rules; 
     }
 }

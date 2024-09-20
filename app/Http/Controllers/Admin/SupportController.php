@@ -18,8 +18,12 @@ class SupportController extends Controller
 
     public function show (string | int $id)
     {
-        $support = Support::find($id);
-        dd($support);
+
+        if(!$support = Support::find($id)) // If no record is found, the support variable will be equal to false.
+        {
+            return redirect()->back();
+        }
+        dd($support->subject);
     }
 
     public function create () 

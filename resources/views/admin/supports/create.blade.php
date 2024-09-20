@@ -7,7 +7,7 @@
     {{-- <input type="text" value="{{ csrf_token() }}" name="_token">  <!-- OBS: Do not forget name tag! Validate that the request is actually valid --> --}}
     @csrf() <!-- diretiva que cria token automaticamente --> 
     
-    <textarea name="body" cols="30" rows="5" placeholder="Description"></textarea>
+    <textarea name="body" cols="30" rows="5" placeholder="Description" name="body"></textarea>
     
     <button type="submit">Submit</button>
 </form>

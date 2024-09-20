@@ -16,6 +16,12 @@ class SupportController extends Controller
         return view('admin/supports/main', compact('supports'));
     }
 
+    public function show (string | int $id)
+    {
+        $support = Support::find($id);
+        dd($support);
+    }
+
     public function create () 
     {
         return view('admin/supports/create');
@@ -25,7 +31,7 @@ class SupportController extends Controller
     {
         // Store information inside the database    
         $data = $request->all();
-        $data['status'] = 'a';
+        $data['status'] = 'o';
 
         $support = $support->create($data);
         dd($support);

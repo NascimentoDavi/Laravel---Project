@@ -82,7 +82,7 @@ class SupportService
         $this->repository->delete($id);
     }
 }
-
+```
 
 # DTO (Data Transfer Object)
 

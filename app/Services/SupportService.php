@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Services;
-
+use App\DTOs\CreateSupportDTO;
+use App\DTOs\UpdateSupportDTO;
 use stdClass;
 
 class SupportService
@@ -16,33 +17,16 @@ class SupportService
     }
 
     // It's gonna be configured with a DTO.
-    public function new(
-        string $subject,
-        string $status,
-        string $body
-    ) : stdClass // return a generic class
+    public function new(CreateSupportDTO $dto) : stdClass // return a generic class
     {
-        return $this->repository->new(
-            $subject,
-            $status,
-            $body
-        );
+        return $this->repository->new($dto);
     }
 
     public function update(
-        string|int $id,
-        string $subject,
-        string $status,
-        string $body
-    ) : stdClass
+        UpdateSupportDTO $dto
+    ) : stdClass|null
     {
-        return $this->repository->update
-        (
-            $id,
-            $subject,
-            $status,
-            $body
-        );
+        return $this->repository->update($dto);
     }
 
     // Recover all the Supports

@@ -7,6 +7,8 @@ use App\Http\Requests\StoreUpdateSupport;
 use App\Models\Support;
 use Illuminate\Http\Request;
 use App\Services\SupportService;
+use App\DTOs\CreateSupportDTO;
+use App\DTOs\UpdateSupportDTO;
 
 class SupportController extends Controller
 {
@@ -57,15 +59,12 @@ class SupportController extends Controller
 
 
 
-    
+    // Valida os valores de entrada automaticamente.  Ao injetar essa classe no método, o Laravel automaticamente instancia um objeto dessa classe quando a requisição é feita.
     public function store (StoreUpdateSupport $request, Support $support) 
     {
-        // Store information inside the database    
-        $data = $request->validated();
-        $data['status'] = 'o';
-
-        $support = $support->create($data);
-        dd($support);
+        $this->service->new(
+            CreateSupportDTO::makeFromRequest($request)
+        );
     }
 
 
@@ -91,14 +90,14 @@ class SupportController extends Controller
 
     public function update (StoreUpdateSupport $request, string | int $id)
     {
-        if(!$support = Support::where('id', '=', $id)->first())
+        $support = $this->service->update(
+            UpdateSupportDTO::makeFromRequest($request)
+        );
+        
+        if (!$support)
         {
             return redirect()->back();
         }
-        
-        $support->update($request->validated());
-
-        // redirect to list
         return redirect()->route('support.main');
     }
 

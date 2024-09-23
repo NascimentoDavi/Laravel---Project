@@ -37,7 +37,7 @@ class StoreUpdateSupport extends FormRequest
                 'min:3',
                 'max:255',
                 // "unique:supports,subject,{$this->id},id"
-                Rule::unique('supports')->ignore($this->id), // Informa que é único na tabela 'supports', entretanto  pode ignorar esse id.
+                Rule::unique('supports')->ignore($this->id), // Informa que é único na tabela 'supports', entretanto  pode ignorar esse id durante edição.
             ];
         }
 

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Info regarding ' . $support->id ?? 'Default Title');
+@section('title', 'Info regarding ' . $support->id ?? 'Default Title')
 
 @section('content')
 

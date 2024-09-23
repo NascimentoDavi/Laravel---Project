@@ -6,13 +6,21 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreUpdateSupport;
 use App\Models\Support;
 use Illuminate\Http\Request;
+use App\Services\SupportService;
 
 class SupportController extends Controller
 {
-    public function main (Support $support) {
+
+    public function __construct(protected SupportService $service)
+    {
+        
+    }
+
+
+    public function main (Request $request) {
 
         // return all the registers.
-        $supports = $support->all();
+        $supports = $this->service->getAll($request->filter);
 
         return view('admin/supports/main', compact('supports'));
     }
@@ -26,7 +34,7 @@ class SupportController extends Controller
     {
         // Support::where('id', $id)->first();
         // Support::where('id', '=', $id)->first();
-        if(!$support = Support::find($id)) // If no record is found, the support variable will be equal to false.
+        if(!$support = $this->service->findOne($id)) // If no record is found, the support variable will be equal to false.
         {
             return redirect()->back();
         }
@@ -48,6 +56,8 @@ class SupportController extends Controller
 
 
 
+
+    
     public function store (StoreUpdateSupport $request, Support $support) 
     {
         // Store information inside the database    
@@ -66,7 +76,7 @@ class SupportController extends Controller
 
     public function edit (Support $support, string | int $id)
     {
-        if(!$support = Support::where('id', '=', $id)->first())
+        if(!$support = $this->service->findOne($id))
         {
             return redirect()->back();
         }
@@ -99,12 +109,8 @@ class SupportController extends Controller
 
     public function destroy (string | int $id)
     {
-        if(!$support = Support::where('id', '=', $id)->first())
-        {
-            return redirect()->back();
-        }
-        $support->delete();
-        return redirect()->route('support.main');
+        $this->service->delete($id);
+        return redirect()->route('supports.index');
     }
 
 

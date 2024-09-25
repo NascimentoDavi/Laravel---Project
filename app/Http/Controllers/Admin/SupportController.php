@@ -16,9 +16,12 @@ class SupportController extends Controller
     {
     }
 
-    // Get All
     public function main (Request $request) {
-        $supports = $this->service->getAll($request->filter);
+        $supports = $this->service->paginate(
+            page: $request->get('page', 1),
+            totalPerPage: $request->get('per_page', 15),
+            filter: $request->filter,
+        );
         return view('admin/supports/main', compact('supports'));
     }
 

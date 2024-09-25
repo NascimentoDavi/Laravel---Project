@@ -3,39 +3,33 @@
 namespace App\Services;
 use App\DTOs\CreateSupportDTO;
 use App\DTOs\UpdateSupportDTO;
+use App\Repositories\SupportRepositoryInterface;
 use stdClass;
 
 class SupportService
 {
-    // Can be viewed by any method inside this call and extensions of it
-    protected $repository;
-
-    // repository interface
-    public function __construct()
+    public function __construct(protected SupportRepositoryInterface $repository)
     {
-
     }
 
-    // It's gonna be configured with a DTO.
-    public function new(CreateSupportDTO $dto) : stdClass // return a generic class
+    public function new(CreateSupportDTO $dto) : stdClass
     {
+        // Delega a operação de persistencia para o repository  
         return $this->repository->new($dto);
     }
 
-    public function update(
-        UpdateSupportDTO $dto
+    public function update( 
+        UpdateSupportDTO $dto 
     ) : stdClass|null
     {
         return $this->repository->update($dto);
     }
 
-    // Recover all the Supports
     public function getAll(string $filter = null) : array
     {
         return $this->repository->getAll($filter);
     }
 
-    // return a StdClass or Null
     public function findOne(string $id) : stdClass | null
     {
         return $this->repository->findOne($id);

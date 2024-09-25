@@ -1,5 +1,10 @@
 <?php
 
+
+/**
+ * Define as Regras de Validação para os dados que estão sendo enviados em uma requisição.
+ */
+
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;

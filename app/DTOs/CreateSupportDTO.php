@@ -10,12 +10,9 @@ class CreateSupportDTO
         public string $subject,
         public string $status,
         public string $body,
-    )
-    {
-        
-    }
+    ) {}
 
-    public static function makeFromRequest (StoreUpdateSupport $request) : self //objeto da própria classe
+    public static function makeFromRequest (StoreUpdateSupport $request) : self // Retorna um Objeto da Própria Classe
     {
         return new self(
             $request->subject,

@@ -11,10 +11,7 @@ class UpdateSupportDTO
         public string $subject,
         public string $status,
         public string $body,
-    )
-    {
-
-    }
+    ){}
 
     public static function makeFromRequest(StoreUpdateSupport $request)
     {

@@ -12,11 +12,11 @@ class CreateSupportDTO
         public string $body,
     ) {}
 
-    public static function makeFromRequest (StoreUpdateSupport $request) : self // Retorna um Objeto da Própria Classe
+    public static function makeFromRequest (StoreUpdateSupport $request) : self
     {
         return new self(
             $request->subject,
-            'a', // default status
+            'o', // default status
             $request->body,
         );
     }

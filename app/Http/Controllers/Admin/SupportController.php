@@ -36,14 +36,13 @@ class SupportController extends Controller
         return view('admin/supports/create');
     }
 
-    public function store (StoreUpdateSupport $request) 
+    public function store (StoreUpdateSupport $request)
     {
         $this->service->new(
             CreateSupportDTO::makeFromRequest($request)
-            /**
-             * Cria o novo Support utilizando o metodo makeFromReques do DTO e automaticamente passa com argumento para o método new do Service. Mas antes disso, na passagem de parâmetro é validado com o StoreUpdateSupport.
-             */
         );
+
+        return redirect()->route('support.main');
     }
 
     public function edit (Support $support, string | int $id)
@@ -71,6 +70,6 @@ class SupportController extends Controller
     public function destroy (string | int $id)
     {
         $this->service->delete($id);
-        return redirect()->route('supports.index');
+        return redirect()->route('support.main');
     }
 }

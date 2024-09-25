@@ -10,6 +10,12 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
+/**
+ * 
+ * A classe FormRequest no Laravel é uma ferramenta poderosa que facilita a validação e a autorização de dados enviados
+ * em requisições HTTP.
+ */
+
 class StoreUpdateSupport extends FormRequest
 {
     /**

@@ -7,7 +7,6 @@ use App\Repositories\{ SupportRepositoryInterface };
 use App\Models\Support;
 use stdClass;
 
-
 class SupportEloquentORM implements SupportRepositoryInterface {
 
     public function __construct(
@@ -16,13 +15,13 @@ class SupportEloquentORM implements SupportRepositoryInterface {
 
     public function getAll(string $filter = null) : array {
         return $this->model
-            ->where(function ($query) use ($filter) { // use é usado pra utilizar variaveis de escopo externo, como $filter;
+            ->where(function ($query) use ($filter) { // 'use' é usado pra utilizar variaveis de escopo externo, como $filter;
                 if($filter) {
                     $query->where('subject', $filter);
                     $query->orWhere('body', 'like', "%{$filter}%");
                 }
             })
-            ->get()
+            ->get() // Não podemos usar all() porque ele nao aceita filtros nem condições
             ->toArray();
     }
 
@@ -38,8 +37,9 @@ class SupportEloquentORM implements SupportRepositoryInterface {
         $this->model->findOrFail($id)->delete();
     }
 
+    // A instância criada é na verdade validada antes de ser adicionada.
     public function new(CreateSupportDTO $dto) : stdClass {
-        $support = $this->model->create( // O Model Support herda da classe Model do Eloquent os métodos de manipulação de banco de daddos.
+        $support = $this->model->create(
             (array) $dto //  É passado como Array por causa de Mass Assignment.
         );
         return (object) $support->toArray();
@@ -47,15 +47,13 @@ class SupportEloquentORM implements SupportRepositoryInterface {
 
     public function update(UpdateSupportDTO $dto) : stdClass {
         $support = $this->model->find($dto->id);
-
-        if(!$support) { // Se não achar retorna null
+        if(!$support) {
             return null;
         } else {
             $support->update(
                 (array) $dto
             );
         }
-
         return (object) $support->toArray();
     }
 }

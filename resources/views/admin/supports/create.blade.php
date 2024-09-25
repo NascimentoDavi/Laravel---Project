@@ -6,12 +6,7 @@
 
     <h1>New Question</h1>
 
-    {{-- $errors injected automalatically inside all the views --}}
-    @if ($errors->any())
-        @foreach($errors->all() as $error)
-            {{ $error }}
-        @endforeach
-    @endif
+    <x-alert/>
 
     <form action="{{ route('support.store') }}" method="POST">
         @include('admin.supports.partials.form')

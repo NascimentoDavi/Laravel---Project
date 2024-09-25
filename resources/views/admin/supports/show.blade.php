@@ -12,10 +12,6 @@
     <li>Descrição: {{ $support->body }}</li>
     </ul>
 
-    <form action="{{ route('support.destroy', $support->id) }}" method="POST">
-    @csrf
-    @method('DELETE')
-    <button type="submit">Delete</button>
-    </form>
-
+    <x-delete :action="route('support.destroy', $support->id)"></x-delete> <!-- Passa a rota para o componente -->
+    
 @endsection

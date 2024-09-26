@@ -24,7 +24,7 @@ class SupportEloquentORM implements SupportRepositoryInterface {
                 }
             })
             ->paginate($totalPerPage, ['*'], 'page', $page); // Não podemos usar all() porque ele nao aceita filtros nem condições
-        dd($result); 
+        return new PaginationPresenter($result);
     }
 
     public function getAll(string $filter = null) : array {
@@ -35,7 +35,7 @@ class SupportEloquentORM implements SupportRepositoryInterface {
                     $query->orWhere('body', 'like', "%{$filter}%");
                 }
             })
-            ->get() // Não podemos usar all() porque ele nao aceita filtros nem condições
+            ->get()
             ->toArray();
     }
 

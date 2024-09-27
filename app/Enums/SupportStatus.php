@@ -4,18 +4,18 @@ namespace App\Enums;
 
 enum SupportStatus : string
 {
-    case O = "Open";
-    case P = "Pendent";
-    case C = "Closed";
+    case o = "Open";
+    case p = "Pendent";
+    case c = "Closed";
 
-    public static function fromValue(string $status) : string
+    public static function fromValue(string $name) : string
     {
         foreach(self::cases() as $status){
-            if($status === $status->name){
+            if($name === $status->name){
                 return $status->value;
             }
         }
-        throw new \ValueError("$status is not valid");
+        throw new \ValueError("$name is not valid");
     }
     
 }

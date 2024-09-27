@@ -34,8 +34,8 @@
 
                         <tr>
                             <td>{{ $support->subject }}</td>
-                            <td>{{ $support->status }}</td>
-                            <td>{{ $support->body }}</td>
+                            <td>{{ getStatusSupport($support->status) }}</td>
+                            <td>{{ ($support->body) }}</td>
                             <td>
                                 <a href="{{ route('support.show', $support->id) }}" class="text-decoration-none">Ir</a>
                             </td>

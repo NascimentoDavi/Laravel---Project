@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use App\Enums\SupportStatus;
 
 return new class extends Migration
 {
@@ -14,7 +15,7 @@ return new class extends Migration
         Schema::create('supports', function (Blueprint $table) {
             $table->id(); // primary key
             $table->string('subject');
-            $table->enum('status', ['o', 'p', 'c'])->default('o'); // 'o' means opened, 'p' means pending and 'c' means closed. 
+            $table->enum('status', array_column(SupportStatus::cases(), 'name')); // 'o' means opened, 'p' means pending and 'c' means closed. 
             $table->text('body');
 
             $table->date('created_at');

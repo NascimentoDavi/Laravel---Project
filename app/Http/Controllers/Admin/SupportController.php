@@ -7,8 +7,8 @@ use App\Http\Requests\StoreUpdateSupport;
 use App\Models\Support;
 use Illuminate\Http\Request;
 use App\Services\SupportService;
-use App\DTOs\CreateSupportDTO;
-use App\DTOs\UpdateSupportDTO;
+use App\DTOs\Supports\CreateSupportDTO;
+use App\DTOs\Supports\UpdateSupportDTO;
 
 class SupportController extends Controller
 {

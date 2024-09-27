@@ -2,7 +2,7 @@
 
 namespace App\Repositories;
 
-use App\DTOs\{ CreateSupportDTO, UpdateSupportDTO};
+use App\DTOs\Supports\{ CreateSupportDTO, UpdateSupportDTO};
 use App\Repositories\{ SupportRepositoryInterface };
 use App\Repositories\{ PaginationInterface };
 use App\Models\Support;

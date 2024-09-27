@@ -2,11 +2,8 @@
 
 namespace App\Repositories;
 
-// Métodos que estarei utilizando para trabalhar com paginação
-
 interface PaginationInterface
 {
-
     /**
      * @return stdClass[]
      */

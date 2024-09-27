@@ -30,18 +30,18 @@
             <div class="collapse navbar-collapse" id="menuNavBar">
                 <div class="navbar-nav ms-auto">
 
-                    <a href="#" class="nav-link">Home</a>
+                    <a href="#" class="nav-link">My Supports</a>
+                    <a href="#" class="nav-link">Search</a>
                     <a href="#" class="nav-link">About</a>
-                    <a href="#" class="nav-link">Contact</a>
 
                     <div class="dropdown">
 
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Products</a>
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Profile</a>
                         <ul class="dropdown-menu dropdown-menu-end">
-                            <li><a href="#" class="dropdown-item">Product 1</a></li>
-                            <li><a href="#" class="dropdown-item">Product 2</a></li>
-                            <li><a href="#" class="dropdown-item">Product 3</a></li>
-                            <li><a href="#" class="dropdown-item">Product 4</a></li>
+                            <li><a href="#" class="dropdown-item">Settings</a></li>
+                            <li><a href="#" class="dropdown-item">Boughts</a></li>
+                            <li><a href="#" class="dropdown-item">Knowledge Area</a></li>
+                            <li><a href="#" class="dropdown-item">Log Out</a></li>
                         </ul>
 
                     </div>

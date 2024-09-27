@@ -14,7 +14,7 @@
 
 <body>
     <!-- Navbar Padrão com Bootstrap -->
-    <nav class="navbar navbar-expand-sm navbar-light bg-light sticky-top">
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark text-light sticky-top mb-2">
 
         <div class="container">
 

@@ -8,6 +8,7 @@ use App\Services\SupportService;
 use Illuminate\Http\Request;
 use App\DTOs\Supports\{ CreateSupportDTO, UpdateSupportDTO };
 use App\Http\Resources\SupportResource;
+use Illuminate\Http\Response;
 
 class SupportAPIController extends Controller
 {
@@ -27,6 +28,12 @@ class SupportAPIController extends Controller
 
     public function show(string $id)
     {
+        if(!$support = $this->service->findOne($id)) {
+            return response()->json([
+                'error' => 'Not Found'
+            ], Response::HTTP_NOT_FOUND);
+        }
+        return new SupportResource($support);
     }
 
     public function update(Request $request, string $id)
@@ -35,5 +42,12 @@ class SupportAPIController extends Controller
 
     public function destroy(string $id)
     {
+        if(!$this->service->findOne($id)) { // Não precisa armazenar | Primeiro procura pelo registro para verificar se existe
+            return response()->json([
+                'error' => 'Not Found'
+            ], Response::HTTP_NOT_FOUND);
+        }
+        $this->service->delete($id);
+        return response()->json([], Response::HTTP_NO_CONTENT); // 204
     }
 }

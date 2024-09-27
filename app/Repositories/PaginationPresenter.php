@@ -40,15 +40,15 @@ class PaginationPresenter implements PaginationInterface
     }
 
     public function currentPage() : int {
-        return $this->currentPage();
+        return $this->paginator->currentPage();
     }
 
     public function nextPage() : int {
-        return $this->currentPage() + 1;
+        return $this->paginator->currentPage() + 1;
     }
 
     public function previousPage() : int {
-        return $this->currentPage() - 1;
+        return $this->paginator->currentPage() - 1;
     }
 
     private function resolveItems (array $items) : array

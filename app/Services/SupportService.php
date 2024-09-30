@@ -18,9 +18,7 @@ class SupportService
         return $this->repository->new($dto);
     }
 
-    public function update( 
-        UpdateSupportDTO $dto 
-    ) : stdClass|null
+    public function update(UpdateSupportDTO $dto) : stdClass | null
     {
         return $this->repository->update($dto);
     }

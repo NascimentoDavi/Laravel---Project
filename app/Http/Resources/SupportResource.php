@@ -1,7 +1,5 @@
 <?php
 
-// Padroniza o retorno de uma requisição HTTP
-
 namespace App\Http\Resources;
 
 use Carbon\Carbon;
@@ -19,7 +17,7 @@ class SupportResource extends JsonResource
     {
         return [
             'identify' => $this->id,
-            'subject' => strtoupper($this->subject), // Será maiúsculo somente na resposta json, não na base
+            'subject' => strtoupper($this->subject),
             'content' => $this->body,
             'dt_created' => Carbon::make($this->created_at)->format('Y-m-d H:i:s'),
         ];

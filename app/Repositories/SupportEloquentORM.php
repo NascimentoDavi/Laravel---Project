@@ -59,7 +59,7 @@ class SupportEloquentORM implements SupportRepositoryInterface {
         return (object) $support->toArray();
     }
 
-    public function update(UpdateSupportDTO $dto) : stdClass {
+    public function update(UpdateSupportDTO $dto) : stdClass | null {
         $support = $this->model->find($dto->id);
         if(!$support) {
             return null;

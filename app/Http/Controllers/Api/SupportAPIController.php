@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Adapters\APIAdapter;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreUpdateSupport;
 use App\Services\SupportService;
@@ -17,7 +18,7 @@ class SupportAPIController extends Controller
         protected SupportService $service,
     ) {  }
 
-    public function index(Request $request) 
+    public function index(Request $request)
     {
         // $supports = Support::paginate();
         $supports = $this->service->paginate(
@@ -27,17 +28,7 @@ class SupportAPIController extends Controller
         );
 
         // $supports is a collection or an array of resources.
-        return SupportResource::collection($supports->items())
-        ->additional([ // Additional is used to attach extra data into a resource response.
-            'meta' => [
-                    'total' => $supports->totalItems(),
-                    'is_first_page' => $supports->isFirstPage(),
-                    'is_last_page' => $supports->isLastPage(),
-                    'current_page' => $supports->currentPage(),
-                    'next_page' => $supports->nextPage(),
-                    'previous_page' => $supports->previousPage(),
-            ]
-        ]);
+        return APIAdapter::toJSON($supports);
     }
 
     public function store(StoreUpdateSupport $request)

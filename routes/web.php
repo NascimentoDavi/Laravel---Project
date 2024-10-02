@@ -15,10 +15,8 @@ Route::put('/supports/{id}', [SupportController::class, 'update'])->name('suppor
 Route::get('/supports/{id}', [SupportController::class, 'show'])->name('support.show'); // More generic route last
 // Route::delete('/supports/{id}', [SupportController::class, 'destroy'])->name('support.destroy'); // Uncomment if using DELETE
 
-// Route for the homepage
 Route::get('/homepage', [HomeController::class, 'home'])->name('homepage.home');
 
-// Route for the welcome page
 Route::get('/', function () {
     return view('welcome');
 });
@@ -27,14 +25,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/main', function () {
+    return view('main');
+})->middleware(['auth', 'verified'])->name('main');
 
 Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+//     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+//     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+//     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
 require __DIR__.'/auth.php';

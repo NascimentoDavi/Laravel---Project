@@ -17,7 +17,6 @@ class SupportController extends Controller
     }
 
     public function main (Request $request) {
-        dd($request);
         $supports = $this->service->paginate(
             page: $request->get('page', 1),
             totalPerPage: $request->get('per_page', 15),

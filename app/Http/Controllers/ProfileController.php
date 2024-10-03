@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileUpdateRequest;
+use App\Models\Support;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -11,8 +12,17 @@ use Illuminate\View\View;
 
 class ProfileController extends Controller
 {
+    public function main (Request $request, Support $support): View 
+    {
+        // Take all the supports
+        $supports = $support->all();
 
-
+        return view('main', [
+            'user' => $request->user(),
+            'support' => $supports,
+            // 'subjects' => $supports->pluck('subject'),
+        ]);
+    }
 
     public function edit(Request $request): View
     {
@@ -20,10 +30,6 @@ class ProfileController extends Controller
             'user' => $request->user(),
         ]);
     }
-
-
-
-
 
     public function update(ProfileUpdateRequest $request): RedirectResponse
     {
@@ -35,11 +41,8 @@ class ProfileController extends Controller
 
         $request->user()->save();
 
-        return Redirect::route('profile.edit')->with('status', 'profile-updated');
+        return Redirect::route('profile/edit')->with('status', 'profile-updated');
     }
-
-
-
 
     public function destroy(Request $request): RedirectResponse
     {
@@ -58,7 +61,4 @@ class ProfileController extends Controller
 
         return Redirect::to('/');
     }
-
-
-
 }

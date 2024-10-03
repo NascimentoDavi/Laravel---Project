@@ -18,25 +18,11 @@ Route::get('/supports/{id}', [SupportController::class, 'show'])->name('support.
 Route::get('/homepage', [HomeController::class, 'home'])->name('homepage.home');
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect(auth() ? '/main' : '/login');
 });
 
-
-
-
-// Welcome Page
-Route::get('/', function () {
-    return view('welcome');
-});
-
-
-
-// Destination page after authentication
-Route::get('/main', function () {
-    return view('main');
-})->middleware(['auth', 'verified'])->name('main');
-
-
+// Rota para a página principal
+Route::get('/main', [ProfileController::class, 'main'])->middleware(['auth', 'verified'])->name('main');
 
 Route::middleware('auth')->group(function () {
        Route::get('/profile', [ProfileController::class, 'edit'])->name('profile/edit');

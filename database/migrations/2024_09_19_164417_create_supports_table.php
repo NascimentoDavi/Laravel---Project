@@ -13,16 +13,13 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('supports', function (Blueprint $table) {
-            $table->id(); // primary key
+            $table->id();
             $table->string('subject');
-            $table->enum('status', array_column(SupportStatus::cases(), 'name')); // 'o' means opened, 'p' means pending and 'c' means closed. 
+            $table->enum('status', array_column(SupportStatus::cases(), 'name'));
             $table->text('body');
-
             $table->date('created_at');
             $table->date('updated_at')->nullable();
-            
-            // In a case where i wanted to explicitly define a nullable field. i'd implement the following: ->nullable();
-            
+                        
         });
     }
 

@@ -23,4 +23,9 @@ class Support extends Model
             set: fn(SupportStatus $status) => $status->name
         );
     }
+
+    public function owner ()
+    {
+        return $this->belongsTo(User::class, 'owner_id');
+    }
 }

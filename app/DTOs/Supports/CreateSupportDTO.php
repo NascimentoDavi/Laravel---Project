@@ -11,6 +11,7 @@ class CreateSupportDTO
         public string $subject,
         public SupportStatus $status,
         public string $body,
+        public int $ownerId
     ) {}
 
     public static function makeFromRequest (StoreUpdateSupport $request) : self
@@ -19,6 +20,7 @@ class CreateSupportDTO
             $request->subject,
             SupportStatus::o, // default status
             $request->body,
+            $request->user()->id
         );
     }
 }

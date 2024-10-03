@@ -18,9 +18,6 @@ use Illuminate\Validation\Rule;
 
 class StoreUpdateSupport extends FormRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     */
     public function authorize(): bool
     {
         return true; // true because we are not dealing with ACL validation yet

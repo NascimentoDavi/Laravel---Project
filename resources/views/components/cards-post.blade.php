@@ -102,7 +102,7 @@
                         {{ $item->body }}
                     </p>
                     <div class="card-links">
-                        <a href="3" class="bg-dark rounded-3 card-link-view card-link text-decoration-none">View</a>
+                        <a href="3" class="bg-dark rounded-3 card-link-view card-link text-decoration-none">Ver</a>
                         <a href="3" class="card-link-help card-link text-decoration-none">Help</a>
                         <a href="3" class="card-link-share card-link text-decoration-none">
                             Share

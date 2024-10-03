@@ -33,5 +33,6 @@
 @section('title', 'Supports Page')
 
 @section('content')
-    <h1>Edit Profile Page</h1>
+    <h1>{{ $user->name }}</h1>
+    
 @endsection

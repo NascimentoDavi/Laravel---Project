@@ -2,6 +2,8 @@
 
 namespace App\Enums;
 
+// Enums define a set of named constants, each associated with a unique value.
+
 enum SupportStatus : string
 {
     case o = "Open";

@@ -1,5 +1,7 @@
 <?php
 
+// Classe Usada para validar dados enviados de um formulário.
+
 namespace App\Http\Requests;
 
 use App\Models\User;

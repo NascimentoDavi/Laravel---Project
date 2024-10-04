@@ -13,7 +13,8 @@ class Support extends Model
     protected $fillable = [
         'subject',
         'status',
-        'body'
+        'body',
+        'owner_id',
     ];
 
     // A coluna Status recebe apenas o atributo 'name' do obj da classe SupportStatus

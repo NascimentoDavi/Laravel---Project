@@ -51,7 +51,6 @@ class SupportEloquentORM implements SupportRepositoryInterface {
         $this->model->findOrFail($id)->delete();
     }
 
-    // A instância criada é na verdade validada antes de ser adicionada.
     public function new(CreateSupportDTO $dto) : stdClass {
         $support = $this->model->create(
             (array) $dto //  É passado como Array por causa de Mass Assignment.

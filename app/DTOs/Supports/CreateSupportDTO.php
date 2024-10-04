@@ -14,13 +14,20 @@ class CreateSupportDTO
         public int $ownerId
     ) {}
 
+    /**
+     * 
+     * @param StoreUpdateSupport $request
+     * @return self
+     * 
+     */
     public static function makeFromRequest (StoreUpdateSupport $request) : self
     {
-        return new self(
+        return new self (
             $request->subject,
-            SupportStatus::o, // default status
+            SupportStatus::o,
             $request->body,
-            $request->user()->id
+            $request->user()->id,
+            $request->owner_id
         );
     }
 }

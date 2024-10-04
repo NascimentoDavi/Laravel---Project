@@ -1,12 +1,18 @@
 <?php
 
+/**
+ * 
+ * Its necessary when using APIs.
+ * 
+ */
+
 namespace App\Http\Resources;
 
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class SupportResource extends JsonResource
+class UserResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -17,10 +23,9 @@ class SupportResource extends JsonResource
     {
         return [
             'identify' => $this->id,
-            'owner' => $this->owner_id,
-            'subject' => strtoupper($this->subject),
-            'content' => $this->body,
-            'dt_created' => Carbon::make($this->created_at)->format('Y-m-d H:i:s'),
+            'name' => $this->name,
+            'email' => $this->email,
+            'password' => $this->password,
         ];
     }
 }

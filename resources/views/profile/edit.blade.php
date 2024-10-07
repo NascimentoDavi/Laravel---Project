@@ -30,9 +30,10 @@
 
 @extends('layouts.app')
 
-@section('title', 'Supports Page')
+@section('title', 'Edit Profile')
 
 @section('content')
-    <h1>{{ $user->name }}</h1>
+   
+    <x-profile_form :user="$user" />
     
 @endsection

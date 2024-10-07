@@ -38,7 +38,7 @@
 
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Profile</a>
                         <ul class="dropdown-menu dropdown-menu-end">
-                            <li><a href=" {{ route('profile/edit') }} " class="dropdown-item">Settings</a></li>
+                            <li><a href=" {{ route('profile.edit') }} " class="dropdown-item">Settings</a></li>
                             <li><a href="#" class="dropdown-item">Boughts</a></li>
                             <li><a href="#" class="dropdown-item">Knowledge Area</a></li>
                             <li><a href="#" class="dropdown-item">Log Out</a></li>

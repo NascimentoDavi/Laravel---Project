@@ -49,4 +49,11 @@ class User extends Authenticatable
     {
         return $this->hasMany(Support::class);
     }
+
+    public function getProfilePhotoUrlAttribute()
+    {
+        return $this->profile_photo
+            ? asset('storage/' . $this->profile_photo)
+            : asset('images/default-profile.png');  
+    }
 }

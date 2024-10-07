@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
+use Illuminate\Support\Facades\Storage;
 
 class ProfileController extends Controller
 {
@@ -41,7 +42,27 @@ class ProfileController extends Controller
 
         $request->user()->save();
 
-        return Redirect::route('profile/edit')->with('status', 'profile-updated');
+        return Redirect::route('profile.edit')->with('status', 'profile-updated');
+    }
+
+    public function updateProfilePhoto(Request $request)
+    {
+        $request->validate([
+            'profile_photo' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
+        $user = $request->user();
+        if ($request->hasFile('profile_photo')) {
+            // Deleta a foto antiga, se existir
+            if ($user->profile_photo) {
+                Storage::delete('public/' . $user->profile_photo);
+            }
+
+            // Salva a nova foto e armazena o caminho
+            $path = $request->file('profile_photo')->store('profile_photos', 'public');
+            $user->profile_photo = $path;
+        }
+        $user->save();
+        return redirect()->route('profile.edit')->with('status', 'Profile Photo uploaded!');
     }
 
     public function destroy(Request $request): RedirectResponse
@@ -61,4 +82,12 @@ class ProfileController extends Controller
 
         return Redirect::to('/');
     }
+
+    // public function showUserSupports(Request $request): View
+    // {
+    //     $user = $request->user(); // Obtenha o usuário autenticado
+    //     $supports = $user->supports; // Acesse todos os supports associados ao usuário
+
+    //     return view('profile.user-supports', compact('user', 'supports'));
+    // }
 }

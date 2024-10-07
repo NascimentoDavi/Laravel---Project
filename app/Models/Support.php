@@ -14,7 +14,7 @@ class Support extends Model
         'subject',
         'status',
         'body',
-        'owner_id',
+        'user_id',
     ];
 
     // A coluna Status recebe apenas o atributo 'name' do obj da classe SupportStatus
@@ -27,6 +27,6 @@ class Support extends Model
 
     public function owner ()
     {
-        return $this->belongsTo(User::class, 'owner_id');
+        return $this->belongsTo(User::class);
     }
 }

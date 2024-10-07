@@ -11,7 +11,7 @@ class CreateSupportDTO
         public string $subject,
         public SupportStatus $status,
         public string $body,
-        public int $ownerId
+        public int $user_id
     ) {}
 
     /**
@@ -27,7 +27,6 @@ class CreateSupportDTO
             SupportStatus::o,
             $request->body,
             $request->user()->id,
-            $request->owner_id
         );
     }
 }

@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Laravel\SerializableClosure\UnsignedSerializableClosure;
 
 return new class extends Migration
 {
@@ -12,8 +13,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('supports', function (Blueprint $table) {
-            $table->unsignedBigInteger('owner_id')->nullable()->after('id');
-            $table->foreign('owner_id')->references('id')->on('users')->onDelete('cascade');
+            $table->unsignedBigInteger('user_id')->nullable()->after('id');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
@@ -23,9 +24,8 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('supports', function (Blueprint $table) {
-            $table->dropForeign(['owner_id']);
-            $table->dropColumn(['owner_id']);
+            $table->dropForeign(['user_id']);
+            $table->dropColumn(['user_id']);
         });
     }
-    
 };

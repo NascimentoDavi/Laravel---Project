@@ -47,6 +47,6 @@ class User extends Authenticatable
 
     public function supports ()
     {
-        return $this->hasMany(Support::class, 'owner_id');
+        return $this->hasMany(Support::class);
     }
 }

@@ -15,7 +15,7 @@ Route::put('/supports/{id}', [SupportController::class, 'update'])->name('suppor
 Route::get('/supports/{id}', [SupportController::class, 'show'])->name('support.show'); // More generic route last
 // Route::delete('/supports/{id}', [SupportController::class, 'destroy'])->name('support.destroy'); // Uncomment if using DELETE
 
-Route::get('/homepage', [HomeController::class, 'home'])->name('homepage.home');
+Route::get('/homepage', [HomeController::class, 'home'])->name('homepage.home')->middleware('auth');
 
 Route::get('/', function () {
     return redirect(auth() ? '/main' : '/login');
@@ -25,10 +25,10 @@ Route::get('/', function () {
 Route::get('/main', [ProfileController::class, 'main'])->middleware(['auth', 'verified'])->name('main');
 
 Route::middleware('auth')->group(function () {
-       Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-       Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-       Route::patch('/profile/photo', [ProfileController::class, 'updateProfilePhoto'])->name('profile.update.photo');
-       Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::patch('/profile/photo', [ProfileController::class, 'updateProfilePhoto'])->name('profile.update.photo');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
 require __DIR__.'/auth.php';

@@ -2,12 +2,26 @@
     .accordion {
         width: 100%;
     }
+    .list-group-div {
+        width: 100%;
+    }
+    .list-group-item {
+        padding: 14px 0 14px 10px;
+        border-color: #686464;
+    }
+    .list-group-item a {
+        text-decoration: none;
+        color: rgb(104, 103, 103);
+    }
+    /* .height-fixed {
+        height: 620px;
+    } */
 </style>
 
 
-<div class="container d-flex justify-content-center gap-2">
+<div class="container d-flex flex-column flex-md-row justify-content-center gap-4">
     
-    <div class="card col-12 col-sm-12 col-md-4 px-3">
+    <div class="card col-12 col-sm-12 col-md-4 px-3 height-fixed border border-secondary rounded my-2">
 
         <img src="{{ $user->profile_photo_url }}" alt="Foto de Perfil" class="card-img-top">
 
@@ -28,17 +42,17 @@
             </p>
 
             <div class="card-links d-flex justify-content-center align-items-center">
-                <button type="button" class="btn btn-primary p-1 mx-1" data-toggle="modal" data-target="#profilePhotoModal">
-                    Update Profile Photo
+                <button type="button" class="btn btn-primary p-1 mx-1" style="max-height: 50px" data-toggle="modal" data-target="#profilePhotoModal">
+                    Update Photo
                 </button>
-                <button type="button" class="btn btn-secondary p-1 mx-1" data-toggle="modal" data-target="#updateProfileModal">
-                    Update Name and email
+                <button type="button" class="btn btn-secondary p-1 mx-1"  style="max-height: 50px" data-toggle="modal" data-target="#updateProfileModal">
+                    Update Name/email
                 </button>
             </div>
         </div>
     </div>
 
-    <div class="accordion">
+    {{-- <div class="accordion">
 
         @foreach($user->supports as $support)
 
@@ -66,7 +80,53 @@
     
     @endforeach
     
+    </div> --}}
 
+    <div class="list-group-div">
+        <ul class="list-group list-group-flush">
+            <p class="px-2 h4">Account</p>
+            <li class="list-group-item">
+                <a href="">Account Settings</a>
+            </li>
+            <li class="list-group-item">
+                <a href="">Premium</a>
+            </li>
+            <li class="list-group-item">
+                <a href="">Boughts</a>
+            </li>
+            <li class="list-group-item">
+                <a href="">Historic</a>
+            </li>
+            <li class="list-group-item">
+                <a href="">Preferences</a>
+            </li>
+        </ul>
+
+        <ul class="list-group list-group-flush py-4">
+            <p class="px-2 h4">Appearance</p>
+            <li class="list-group-item">
+                <a href="">App Icon</a>
+            </li>
+            <li class="list-group-item">
+                <a href="">Theme</a>
+            </li>
+            <li class="list-group-item">
+                <a href="">Profile Photo</a>
+            </li>
+            <li class="list-group-item">
+                <a href="">Status Message</a>
+            </li>
+        </ul>
+
+        <ul class="list-group list-group-flush py-4">
+            <p class="px-2 h4">Support</p>
+            <li class="list-group-item">
+                <a href="">Relate a Problem</a>
+            </li>
+            <li class="list-group-item">
+                <a href="">Delete Account</a>
+            </li>
+        </ul>
     </div>
 
 </div>

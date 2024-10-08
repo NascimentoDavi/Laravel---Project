@@ -71,7 +71,7 @@
     </div>
 
     {{-- Fill the footer space --}}
-    <div class="py-4"></div> 
+    <div class="py-5"></div> 
     <footer class="p-4 bg-dark text-light text-center fixed-bottom">
         Todos os Direitos Reservados
     </footer>
